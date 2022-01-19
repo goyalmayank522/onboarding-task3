@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
-  def welcome
-    @articles = Article.all
-  end
+  #def welcome
+    #@articles = Article.all
+  #end
   
   def new
   end

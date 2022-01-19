@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
   def new
-    @user = User.new
   end
 
   def create
-    user = User.new(params.require(:user).permit(:username, :password))
+    user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
       redirect_to root_path
@@ -12,5 +11,10 @@ class UsersController < ApplicationController
       flash[:alert] = "Please enter the Username/Password carefully!"
       redirect_to '/users'
     end
+  end
+  
+  private
+  def user_params
+    params.require(:user).permit(:username, :password)
   end
 end

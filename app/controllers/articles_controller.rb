@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = Article.new(article_params.merge(user_id: current_user.id))
     @article.user = current_user
 
     if @article.save
