@@ -1,0 +1,17 @@
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+<style type="text/css">
+.alert-danger{
+  color: red;
+}
+</style>
+
+<h1>Login</h1>
+<%= form_tag '/login' do %>
+  <%= label_tag :username %>
+  <%= text_field_tag :username %>
+  <%= label_tag :password %>
+  <%= password_field_tag :password %>
+  <%= submit_tag "Login" %>
+<% end %>

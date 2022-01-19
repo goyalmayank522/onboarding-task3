@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+ 
   def index
     @articles = Article.all
   end
@@ -13,6 +14,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.user = current_user
 
     if @article.save
       redirect_to @article
@@ -27,7 +29,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-
+    
     if @article.update(article_params)
       redirect_to @article
     else
@@ -43,7 +45,10 @@ class ArticlesController < ApplicationController
   end
   
   private
+    
+    # Only allow a list of trusted parameters through.
     def article_params
       params.require(:article).permit(:title, :body)
     end
+
 end

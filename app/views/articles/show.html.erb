@@ -1,6 +1,14 @@
-<h1><%= @article.title %></h1>
-<p><%= @article.body %> </p>
-<ul>
-  <li><%= link_to "Edit this Article", edit_article_path(@article) %></li>
-  <li><%= link_to "Delete this Article", article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %></li>
-</ul>
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @article.body %>
+</p>
+
+<% if logged_in? %>
+        <%= link_to 'Edit', edit_article_path(@article) %> | <%= link_to "Delete this Article", article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %>	
+<% end %>
+<%= link_to 'Back', articles_path %>

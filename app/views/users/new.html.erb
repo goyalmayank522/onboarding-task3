@@ -1,0 +1,16 @@
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+<style type="text/css">
+.alert-danger{
+  color: red;
+}
+</style>
+<h1>Sign Up</h1>
+<%= form_for @user do |f|%>
+  <%= f.label :username%><br>
+  <%= f.text_field :username%><br>
+  <%= f.label :password%><br>
+  <%= f.password_field :password%><br>
+  <%= f.submit %>
+<% end %>
