@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  #resources :users do
-    #resources :articles
-  #end
   resources :articles
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
