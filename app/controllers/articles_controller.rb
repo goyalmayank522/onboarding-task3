@@ -1,7 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: [ :show, :index ]
-  before_action :correct_user!, only: [ :edit, :update, :destroy ]
+  
   def index
     @articles = Article.all
   end
@@ -47,18 +45,9 @@ class ArticlesController < ApplicationController
   end
   
   private
-    def set_article
-      @article = Article.find(params[:id])
-    end
     
     # Only allow a list of trusted parameters through.
     def article_params
       params.require(:article).permit(:title, :body)
-    end
-    def correct_user!
-      @article = Article.find_by(id: params[:id])
-      if  !current_user.nil? &&  @article.user.id != current_user.id
-        render :file => "#{Rails.root}/public/422.html",  layout: false, status: 422
-      end
     end
 end
