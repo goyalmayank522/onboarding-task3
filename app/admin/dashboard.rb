@@ -8,5 +8,23 @@ ActiveAdmin.register_page "Dashboard" do
         small I18n.t("active_admin.dashboard_welcome.call_to_action")
       end
     end
+    
+    columns do
+      column do
+        panel "Recent Posts" do
+          ul do
+            Article.last(10).map do |article|
+              li link_to(article.title, admin_article_path(article))
+            end
+          end
+        end
+      end
+
+      column do
+        panel "Info" do
+          para "Welcome Admin!!!"
+        end
+      end
+    end
   end   
 end
