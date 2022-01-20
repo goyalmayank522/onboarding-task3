@@ -1,0 +1,10 @@
+<% if logged_in? %>
+  <h1>You are logged In, <%= current_user.username %></h1>
+  <%= button_to "LogOut", '/logout', method: :get %>
+<% else %>
+  <h1>Welcome to Blogging Platform</h1>
+  <%= button_to "LogIn", '/login', method: :get %>
+  <%= button_to "SignUp", '/users', method: :get %> 
+<% end %>
+<h4> Articles are: </h4>
+<br><%= link_to 'Articles', articles_path %>
