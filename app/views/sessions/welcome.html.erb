@@ -5,6 +5,8 @@
   <%= button_to "LogOut", destroy_user_session_path, method: :delete %>
 <% else %>
   <h1>Welcome to Blogging Platform</h1>
+  <%= button_to "LogIn as Admin", new_admin_user_session_path %> 
+  <br>
   <%= button_to "LogIn", new_user_session_path %>
   <br>
   <%= button_to "SignUp", user_registration_path %> 
